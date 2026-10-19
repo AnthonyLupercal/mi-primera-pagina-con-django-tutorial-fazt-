@@ -1,0 +1,42 @@
+Es bueno revisar la base de datos para poder observar como se modifica con la Django Shell
+
+# Para importar los modelos de base de datos
+>>> from myapp.models import Project, Task
+
+# Creamos un objeto que hará una fila en la base de datos
+>>> p = Project(name="Aplicacion movil")
+# Guardamos el objeto en la base de datos
+>>> p.save()
+
+# Para poder mirar los objetos de una clase
+>>> Project.objects.all()
+<QuerySet [<Project: Project object(1)>, <Project: Project object (2)>]>
+# Para buscar por caracterísitca
+>>> Project.objects.get(id=1)
+<Project: Project object(1)>
+>>> Project.objects.get(name="Aplicacion movil")
+<Project: Project object(1)>
+
+# Para guardar un objeto como otro ya existente
+>>> p = Project.objects.get(id=1)
+>>> p
+<Project: Project object (1)>
+>>> 
+# Esto es bastante útil para asignar llaves foraneas a otras clases. En este caso asignamos una tarea a un proyecto
+>>> p.task_set.create(title="descargar IDE")
+<Task: Task object (1)>
+>>> p.task_set.create(title="desarrollar login")
+<Task: Task object (2)>
+# Para obtener el objeto que comparta la llave foranea. En este caso "descargar IDE" comparte llave con "Aplicacion movil"
+>>> p.task_set.get(id=1)
+<Task: Task object (1)>
+
+# Para filtrar los objetos de una clase. Parecido al comando LIKE en SQL
+>>> Project.objects.filter(name__startswith="aplicacion")
+<QuerySet [<Project: Project object (1)>]>
+# Podemos asignar toda la lista de objetos a un objeto, para poder filtrarlo desde el objeto
+>>> p = Project.objects
+>>> p
+<django.db.models.manager.Manager object at 0x7f5be016cef0>
+>>> p.filter(name__startswith="Aplicacion")
+<QuerySet [<Project: Project object (1)>]>
