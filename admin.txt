@@ -1,0 +1,18 @@
+Comando con django/manage.py
+
+# Para crear un proyecto
+django-admin startproyect _____ .
+
+# Para crear una aplicación (También podemos usar django-admin pero es mejor usar manage.py para relacionarlo con el proyecto dentro del código de una forma más sencilla)
+python manage.py startapp _____
+
+# Para correr el servidor en un puerto
+python manage.py runserver 3000
+
+# Para crear un nuevo usuario administrador dentro de /admin
+python manage.py createsuperuser
+
+
+/admin
+Después de crear nuestro super usuario podemos cambiar el acceso a las clases por medio del archivo admin.py de alguna de nuestras apps.
+De esta manera podremos crear nuevos objetos, editarlos o borrarlos por medio de una interfaz gráfica sin tener que utilizar la shell de django.
