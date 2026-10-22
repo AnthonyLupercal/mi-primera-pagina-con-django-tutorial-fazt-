@@ -4,11 +4,12 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("<h1>Index page</h1>")
 
-def hello(request, id):
-    result = ((id + 100) * 3 / 2)
+def hello(request, username):
+    print(type(username))
+#    result = ((id + 100) * 3 / 2)
 #    return HttpResponse("<h1>Hello " + username + "</h1>")
 #    return HttpResponse(f"<h1>Hello {username}</h1>")
-    return HttpResponse("<h1>Hello ID user: %s</h1>" % int(result))
+    return HttpResponse("<h1>Hello %s</h1>" % username)
 
 def about(request):
     return HttpResponse("About")
