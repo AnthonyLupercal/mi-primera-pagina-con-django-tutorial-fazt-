@@ -9,6 +9,9 @@
 </head>
 
 <body>
+  {% extends 'layouts/base.html' %}
+  {% block content %}
+
   <h1>Projects</h1>
   {%for project in projects%}
   <article>
@@ -17,6 +20,8 @@
     <button>Update</button>
   </article>
   {%endfor%}
+
+  {% endblock %}
 </body>
 
 </html>
