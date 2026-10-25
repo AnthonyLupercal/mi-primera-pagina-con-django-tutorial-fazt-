@@ -4,10 +4,16 @@ from .models import Project, Task
 from django.shortcuts import get_object_or_404, render
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    title = 'Django Course!!'
+    return render(request, 'index.html', {
+        'title': title
+    })
 
 def about(request):
-    return render(request, 'about.html')
+    username = 'Likla'
+    return render(request, 'about.html', {
+        'username': username
+    })
 
 def hello(request, username):
     print(type(username))
@@ -18,16 +24,26 @@ def hello(request, username):
 
 
 def projects(request):
-    projects = list(Project.objects.values())
-    return render(request, 'project.html')
+#    projects = list(Project.objects.values())
+    projects = Project.objects.all()
+    return render(request, 'project.html',{
+        'projects': projects
+    })
 #    return JsonResponse(projects, safe=False)
 
-#def tasks(request, id):
+
 def tasks(request):
-#    task = Task.objects.get(id=id)
+    tasks = Task.objects.all()
+    return render(request, 'task.html',{
+        'tasks' : tasks
+    })
+"""
+def tasks(request, id):
+    task = Task.objects.get(id=id)
     task = get_object_or_404(Task, id=id)
-    return render(request, 'task.html')
-#    return HttpResponse('Task: %s' % task.title)
+    return HttpResponse('Task: %s' % task.title)
+"""
+
 """
 def tasks(request, name):
     task = Task.objects.get(title=name)

@@ -10,6 +10,14 @@
 
 <body>
   <h1>Task</h1>
+  {% for task in tasks %}
+  <article>
+    <h2>{{task.title}}</h2>
+    <p>{{task.description}}</p>
+    <p>Project: {{task.project.name}}</p>
+    <button>Eliminate</button>
+  </article>
+  {% endfor %}
 </body>
 
 </html>
