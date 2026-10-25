@@ -12,10 +12,14 @@
   <h1>Task</h1>
   {% for task in tasks %}
   <article>
-    <h2>{{task.title}}</h2>
+    <!-- Este es un comentario en HTML -->
+    {# Este es un comentario en jinja #}
+    <h2>{% if task.done == True%}✅{% else %}⏰{% endif %}  {{task.title}}</h2>
+    <p>Estado de la tarea: {%if task.done == True%}Hecho{%else%}Pendiente{% endif %}</p>
     <p>{{task.description}}</p>
     <p>Project: {{task.project.name}}</p>
     <button>Eliminate</button>
+    <button>✅ Done</button>
   </article>
   {% endfor %}
 </body>
