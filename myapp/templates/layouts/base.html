@@ -1,6 +1,10 @@
 <nav>
-  <a href="/home">home </a>-<a href="/home/projects">projects </a>-<a href="/home/tasks">tasks </a>-<a
-    href="/home/about">about </a>-<a href="/home/create_task">create task </a>-<a href="/home/create_project">create project </a>
+  <a href="{% url 'index' %}">home </a>-
+  <a href="{% url 'projects' %}">projects </a>-
+  <a href="{% url  'tasks' %}">tasks </a>-
+  <a href="{% url 'about' %}">about </a>-
+  <a href="{% url 'create_task' %}">create task </a>-
+  <a href="{% url 'create_project' %}">create project </a>
 </nav>
 {% block content %}
 {% endblock %}
