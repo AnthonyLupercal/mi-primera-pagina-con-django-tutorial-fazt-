@@ -1,4 +1,16 @@
-<nav>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Django Projects</title>
+    <link href="{% static '/styles/main.css' %}" rel="stylesheet">
+  </head>
+  <body>
+
+  <nav>
   <a href="{% url 'index' %}">home </a>-
   <a href="{% url 'projects' %}">projects </a>-
   <a href="{% url  'tasks' %}">tasks </a>-
@@ -8,3 +20,6 @@
 </nav>
 {% block content %}
 {% endblock %}
+
+  </body>
+</html>
